@@ -1,5 +1,5 @@
 module.exports = {
-    title: 'Vue Element Admin',
+    title: '易联众',
 
     /**
      * @type {boolean} true | false
@@ -17,7 +17,7 @@ module.exports = {
      * @type {boolean} true | false
      * @description Whether need breadcrumb
      */
-    breadcrumb: true,
+    breadcrumb: false,
 
     /**
      * @type {boolean} true | false
