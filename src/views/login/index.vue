@@ -203,11 +203,11 @@ $white: #ffffff;
         span {
             float: left;
             color: #ffffff;
-            font-size: 20px;
+            font-size: 24px;
             padding-left: 18px;
             line-height: 46px;
-            font-weight: 700;
-            // font-family: "PangMenZhengDao";
+            font-weight: 400;
+            font-family: "PangMenZhengDao";
         }
     }
     .login-main {

@@ -14,11 +14,11 @@
                 <el-dropdown-menu slot="dropdown" class="user-dropdown">
                     <router-link to="/">
                         <el-dropdown-item>
-                            Home
+                            <div @click="handleUpdate">修改密码</div>
                         </el-dropdown-item>
                     </router-link>
                     <el-dropdown-item divided>
-                        <span style="display:block;" @click="logout">退出</span>
+                        <div @click="logout">退出系统</div>
                     </el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
@@ -49,6 +49,9 @@ export default {
         async logout() {
             await this.$store.dispatch("user/logout");
             this.$router.push(`/login?redirect=${this.$route.fullPath}`);
+        },
+        handleUpdate() {
+            this.$store.commit("user/SHOW_PWD_FORM", true);
         }
     }
 };

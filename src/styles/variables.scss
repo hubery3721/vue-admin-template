@@ -1,13 +1,14 @@
 // sidebar
-$menuText:#bfcbd9;
+$menuText:#343a43;
 $menuActiveText:#409EFF;
-$subMenuActiveText:#f4f4f5; //https://github.com/ElemeFE/element/issues/12951
+$subMenuActiveText:#409EFF; //https://github.com/ElemeFE/element/issues/12951
+$subMenuActiveBg: rgba(0, 144, 250, 0.1);
 
-$menuBg:#304156;
-$menuHover:#263445;
+$menuBg:#f8faf9;
+$menuHover:rgba(0, 144, 250, 0.1);
 
-$subMenuBg:#1f2d3d;
-$subMenuHover:#001528;
+$subMenuBg:#f8faf9;
+$subMenuHover:rgba(0, 144, 250, 0.1);
 
 $sideBarWidth: 210px;
 
@@ -22,6 +23,7 @@ $sideBarWidth: 210px;
   subMenuBg: $subMenuBg;
   subMenuHover: $subMenuHover;
   sideBarWidth: $sideBarWidth;
+  subMenuActiveBg: $subMenuActiveBg
 }
 
 // https://element.eleme.cn/#/zh-CN/theme/preview

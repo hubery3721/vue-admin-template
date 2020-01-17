@@ -9,6 +9,23 @@
             </div>
             <app-main />
         </div>
+        <el-dialog title="修改密码" :visible.sync="pwdFormVisible" width="30%">
+            <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px">
+                <el-form-item label="旧密码" prop="oldpwd">
+                    <el-input v-model="ruleForm.oldpwd" type="password" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="新密码" prop="newpwd">
+                    <el-input v-model="ruleForm.newpwd" type="password" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="重复新密码" prop="checknewpass">
+                    <el-input v-model="ruleForm.checknewpass" type="password" autocomplete="off"></el-input>
+                </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="dialogClose">取 消</el-button>
+                <el-button type="primary" @click="updatePassword">确 定</el-button>
+            </div>
+        </el-dialog>
     </div>
 </template>
 
@@ -41,13 +58,85 @@ export default {
                 withoutAnimation: this.sidebar.withoutAnimation,
                 mobile: this.device === "mobile"
             };
+        },
+        pwdFormVisible: {
+            set(val) {
+                this.$store.state.user.pwdFormVisible = val;
+            },
+            get() {
+                return this.$store.state.user.pwdFormVisible;
+            }
         }
+    },
+    data() {
+        const validatePass = (rule, value, callback) => {
+            if (value == "") {
+                callback(new Error("请输入密码"));
+            } else {
+                if (this.ruleForm.checknewpass !== "") {
+                    this.$refs.ruleForm.validateField("checknewpass");
+                }
+                callback();
+            }
+        };
+
+        const validatePass2 = (rule, value, callback) => {
+            if (value == "" || !value) {
+                callback(new Error("请再次输入密码"));
+            } else if (value !== this.ruleForm.newpwd) {
+                callback(new Error("两次输入密码不一致!"));
+            } else {
+                callback();
+            }
+        };
+        return {
+            ruleForm: {},
+            rules: {
+                oldpwd: [{ required: true, message: "请输入密码" }],
+                newpwd: [
+                    {
+                        required: true,
+                        message: "请输入新密码",
+                        trigger: "blur"
+                    }
+                ],
+                checknewpass: [
+                    {
+                        required: true,
+                        validator: validatePass2,
+                        trigger: "blur"
+                    }
+                ]
+            }
+        };
     },
     methods: {
         handleClickOutside() {
             this.$store.dispatch("app/closeSideBar", {
                 withoutAnimation: false
             });
+            this.$store.commit("user/SHOW_PWD_FORM", false);
+        },
+        updatePassword() {
+            this.$refs.ruleForm.validate(valid => {
+                if (valid) {
+                    console.log("Params", this.ruleForm);
+                    updatePwd(this.ruleForm).then(() => {
+                        this.$message({
+                            title: "操作成功",
+                            message: "修改密码成功",
+                            type: "success",
+                            duration: 2000
+                        });
+                        this.$store.commit("user/SHOW_PWD_FORM", false);
+                    });
+                } else {
+                    return false;
+                }
+            });
+        },
+        dialogClose() {
+            this.$store.commit("user/SHOW_PWD_FORM", false);
         }
     }
 };

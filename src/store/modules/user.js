@@ -6,7 +6,8 @@ const state = {
     token: getToken(),
     name: '',
     avatar: '',
-    roles: []
+    roles: [],
+    pwdFormVisible: false,
 }
 
 const mutations = {
@@ -21,6 +22,9 @@ const mutations = {
     },
     SET_ROLES: (state, roles) => {
         state.roles = roles
+    },
+    SHOW_PWD_FORM: (state, show) => {
+        state.pwdFormVisible = show
     }
 }
 

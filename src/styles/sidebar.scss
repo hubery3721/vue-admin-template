@@ -35,6 +35,7 @@
 
     .el-scrollbar {
       height: 100%;
+      border-right: 1px solid #dcdee2;
     }
 
     &.has-logo {
@@ -55,6 +56,8 @@
 
     .svg-icon {
       margin-right: 16px;
+      color: #8a949e;
+      vertical-align: middle;
     }
 
     .el-menu {
@@ -69,10 +72,19 @@
       &:hover {
         background-color: $menuHover !important;
       }
+
+      i {
+        color: $menuText !important;
+        margin-top: -2px;
+      }
     }
 
     .is-active>.el-submenu__title {
       color: $subMenuActiveText !important;
+
+      .svg-icon {
+        color: $subMenuActiveText;
+      }
     }
 
     & .nest-menu .el-submenu>.el-submenu__title,
@@ -84,6 +96,24 @@
         background-color: $subMenuHover !important;
       }
     }
+
+    // rewrite
+    .el-menu-item {
+      &.is-active {
+        background: $subMenuActiveBg !important;
+        font-weight: bold;
+
+        .svg-icon {
+          color: $subMenuActiveText;
+        }
+      }
+    }
+
+    // .el-menu-item,
+    // .el-submenu__title {
+    //   height: 40px;
+    //   line-height: 40px;
+    // }
   }
 
   .hideSidebar {

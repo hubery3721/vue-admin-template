@@ -25,7 +25,7 @@ export default {
     },
     data() {
         return {
-            title: "电子支付后台维护系统",
+            title: "统一支付平台",
             logo: Logo
         };
     }
@@ -48,7 +48,7 @@ export default {
     height: 50px;
     line-height: 50px;
     background: #0090fa;
-    text-align: center;
+    padding-left: 10px;
     overflow: hidden;
 
     & .sidebar-logo-link {
@@ -66,10 +66,11 @@ export default {
             display: inline-block;
             margin: 0;
             color: #fff;
-            font-weight: 600;
+            font-weight: 400;
             line-height: 50px;
-            font-size: 14px;
-            font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
+            font-size: 24px;
+            // font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
+            font-family: "PangMenZhengDao";
             vertical-align: middle;
         }
     }

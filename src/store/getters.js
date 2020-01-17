@@ -8,5 +8,6 @@ const getters = {
     name: state => state.user.name,
     roles: state => state.user.roles,
     permission_routes: state => state.permission.routes,
+    pwdFormVisible: state => state.user.pwdFormVisible,
 }
 export default getters

@@ -284,8 +284,8 @@ export default {
                 vertical-align: -3px;
             }
             &:hover {
-                background-color: #b4bccc;
-                color: #fff;
+                background-color: #ffffff;
+                color: #333333;
             }
         }
     }
